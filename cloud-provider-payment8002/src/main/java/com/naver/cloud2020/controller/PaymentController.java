@@ -35,7 +35,7 @@ public class PaymentController {
 		Payment payment = paymentService.getPaymentById(id);
 		log.info("***查询结果: " + payment);
 		if (payment != null) {
-			return new CommonResult(200, port + " query success", payment);
+			return new CommonResult(200,  port + " query success", payment);
 		} else {
 			return new CommonResult(444, port + " query fail, ID: " + id, null);
 		}
