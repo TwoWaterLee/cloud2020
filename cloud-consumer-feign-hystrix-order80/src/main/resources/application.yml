@@ -1,0 +1,21 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    register-with-eureka: true    #向注册中心注册自己
+    fetch-registry: true   #检索服务
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+
+spring:
+  application:
+    name: cloud-provider-hystrix-order
+
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+
+feign:
+  hystrix:
+    enabled: true
