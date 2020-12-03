@@ -1,17 +1,15 @@
 server:
-  port: 3355
+  port: 3366
 
 spring:
   application:
     name: config-client
-
   cloud:
     config:
       label: master
       name: config
       profile: dev
-      uri: http://config-3344.com:3344
-
+      uri: http://localhost:3344
 eureka:
   client:
     service-url:
@@ -26,3 +24,4 @@ management:
     web:
       exposure:
         include: "*"
+
