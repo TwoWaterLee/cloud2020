@@ -1,6 +1,6 @@
 package com.naver.cloud2020.controller;
 
-import com.naver.cloud2020.damain.CommonResult;
+import com.naver.cloud2020.domain.CommonResult;
 import com.naver.cloud2020.service.AccountService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

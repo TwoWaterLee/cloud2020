@@ -18,6 +18,11 @@ public class AccountServiceImpl implements AccountService {
 	public void decrease(Long userId, BigDecimal money) {
 		log.info("--> 扣减余额 start");
 		accountDao.decrease(userId, money);
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		log.info("--> 扣减余额 end");
 	}
 }

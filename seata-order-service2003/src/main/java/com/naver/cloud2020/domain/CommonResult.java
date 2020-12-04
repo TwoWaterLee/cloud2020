@@ -1,4 +1,4 @@
-package com.naver.cloud2020.damain;
+package com.naver.cloud2020.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
