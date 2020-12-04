@@ -4,7 +4,9 @@ import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.naver.cloud2020.entity.CommonResult;
 import com.naver.cloud2020.entity.Payment;
+import com.naver.cloud2020.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +22,9 @@ public class CircleBreakerController {
 
 	@Resource
 	private RestTemplate restTemplate;
+
+	@Resource
+	private PaymentService paymentService;
 
 	@RequestMapping("/consumer/fallback/{id}")
 //	@SentinelResource(value = "fallback") // 没有配置
@@ -45,5 +50,10 @@ public class CircleBreakerController {
 	public CommonResult blockHandler(@PathVariable Long id, BlockException blockException) {
 		Payment payment = new Payment(id, "null");
 		return new CommonResult(445, "blockHandler-sentinel限流，exception内容: " + blockException.getMessage(), payment);
+	}
+
+	@GetMapping(value = "/consumer/paymentSQL/{id}")
+	public CommonResult<Payment> paymentSQL(@PathVariable("id") Long id) {
+		return paymentService.paymentSQL(id);
 	}
 }
